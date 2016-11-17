@@ -4,9 +4,10 @@
  *
  * @author junior
  */
-class Core {
-    
-    public function run() {
+class Core 
+{    
+    public function run() 
+    {
         //$url = substr($_SERVER['PHP_SELF'], 10);
         $url = explode('index.php', $_SERVER['PHP_SELF']);
         $url = end($url);
@@ -29,13 +30,9 @@ class Core {
             $currentAction = 'index';
         }
         
-        require_once 'Core/controller.php';
-        
         $c = new $currentController();
         //$c->$currentAction();
         call_user_func_array(array($c, $currentAction), $params);
     }
-    
-    
     
 }

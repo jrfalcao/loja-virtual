@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="assets/css/template.css" rel="stylesheet" type="text/css"/>
+        <link href="/assets/css/template.css" rel="stylesheet" type="text/css"/>
         <title>Minha Loja</title>
     </head>
     <body>
@@ -13,7 +13,7 @@
                     <a href="/"><li>Home</li></a>
                     <a href="/empresa"><li>Empresa</li></a>
                     <?php foreach($viewData['categorias'] as $categoria):?>
-                        <a href="/<?=  strtolower($categoria['titulo'])?>"><li><?= $categoria['titulo']?></li></a>
+                        <a href="/categorias/ver/<?=  $categoria['id']?>"><li><?= $categoria['titulo']?></li></a>
                     <?php endforeach;?>
                     <a href="/contato"><li>contato</li></a>
                 </ul>

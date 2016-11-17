@@ -13,7 +13,7 @@ class controller {
     
     public function loadTemplate($viewName, $viewData = array()) {
         $cat = new categorias();
-        $viewData['categorias'] = $cat->get();
+        $viewData['categorias'] = $cat->getAll();
         include './views/template.php';
     }
     

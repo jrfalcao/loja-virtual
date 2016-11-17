@@ -16,4 +16,5 @@ and open the template in the editor.
 .menu li:hover{background-color: #CCC}
 .container{background-color: #CCC; margin: auto; max-width: 900px; min-height: 400px}
 .footer{background-color: #EEE; height: 100px; width: 100%}
+.produto{width: 205px; height: 230px; float: left; margin: 10px; background-color: #EEE; text-align: center;}
 
