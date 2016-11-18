@@ -12,8 +12,7 @@ class produtosController extends controller
         ];
         
         $produtos = new produtos();
-        $dados['produto'] = $produtos->get(1,$id);
-        var_dump($dados['produto']);exit;
+        $dados['produto'] = $produtos->get($id);
         $this->loadTemplate('produto', $dados);
     }
 }

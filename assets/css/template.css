@@ -14,7 +14,8 @@ and open the template in the editor.
 .menu ul{line-height: 50px}
 .menu li{padding-left: 10px;padding-right: 10px; display: inline-block; text-transform: uppercase}
 .menu li:hover{background-color: #CCC}
-.container{background-color: #CCC; margin: auto; max-width: 900px; min-height: 400px}
+.container{ margin: auto; max-width: 900px; min-height: 300px}
 .footer{background-color: #EEE; height: 100px; width: 100%}
 .produto{width: 205px; height: 230px; float: left; margin: 10px; background-color: #EEE; text-align: center;}
-
+.produto_foto{width: 300px; height: 300px; background-color: #EEE; margin: 10px; float: left}
+.produto_desc{float: left; width: 550px; margin: 10px}

@@ -14,19 +14,30 @@ class produtos extends model
      * $qt deverá ter valor = 1
      * @return type array com 1 ou mais produtos
      */
-    public function get($qt = 0, $id = null) 
+    public function getProdutos($qt = 0) 
     {
         $array = array();
 
         $sql = "select * from produtos";
-        if($qt > 0 && $id == null) {$sql .= " ORDER BY RAND() LIMIT $qt";}
-        else {$sql .= " WHERE id = $id";}
+        if($qt > 0 ) {$sql .= " ORDER BY RAND() LIMIT $qt";}
         $sql = $this->db->query($sql);
 
         if ($sql->rowCount() > 0) {
             $array = $sql->fetchAll();
         }
         return $array;
+    }
+    public function get($id) 
+    {
+        if(isset($id) && !empty($id)) {
+            $sql = "select * from produtos WHERE id=$id";
+            $sql = $this->db->query($sql);
+
+            if ($sql->rowCount() > 0) {
+                return $sql->fetch();
+            }
+        }
+        return;
     }
     /**
      * 
