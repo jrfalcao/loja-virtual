@@ -39,6 +39,18 @@ class produtos extends model
         }
         return;
     }
+    public function getCarrinho($id = []) 
+    {
+        if(isset($id) && !empty($id)) {
+            $sql = "select * from produtos WHERE id IN(".implode(',', $id).")";
+            $sql = $this->db->query($sql);
+
+            if ($sql->rowCount() > 0) {
+                return $sql->fetchAll();
+            }
+        }
+        return;
+    }
     /**
      * 
      * @param type INT $cat - ID da categoria solicitada

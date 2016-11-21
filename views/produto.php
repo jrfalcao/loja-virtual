@@ -8,7 +8,7 @@
     </div>
     <div class="preco">
         <span>R$ <?= $produto['preco'] ?></span>
-        <a href="#">Adicionar Ao Carrinho</a>
+        <a href="/carrinho/add/<?= $produto['id'] ?>">Adicionar Ao Carrinho</a>
     </div>
 </section>
 <div style="clear: both"></div>
