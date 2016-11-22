@@ -1,1 +1,1 @@
-<p>View Empresa - Sobre nós</p>
+<p>View Empresa - Sobre nÃ³s</p>

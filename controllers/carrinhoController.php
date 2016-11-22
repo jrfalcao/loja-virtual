@@ -22,4 +22,19 @@ class carrinhoController extends controller {
         }
     }
 
+    public function del($id) {
+            foreach($_SESSION['carrinho'] as $key => $value){
+                if($value == $id){
+                    unset($_SESSION['carrinho'][$key]);
+                    break;
+                }
+            }
+            header("Location: /carrinho");
+    }
+
+    public function finalizar()
+    {
+        var_dump($_SESSION['carrinho']);
+    }
+
 }

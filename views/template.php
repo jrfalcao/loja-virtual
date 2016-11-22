@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="/assets/css/template.css" rel="stylesheet" type="text/css"/>
         <title>Minha Loja</title>
     </head>
@@ -17,6 +18,11 @@
                     <?php endforeach;?>
                     <a href="/contato"><li>contato</li></a>
                 </ul>
+                <a href="/carrinho">
+                    <div class="carrinho">
+                        <?php echo (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) ? "Carrinho: ".count($_SESSION['carrinho']) : '';?>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="container">
