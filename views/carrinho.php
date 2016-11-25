@@ -7,10 +7,8 @@
         <th style="text-align: left">Ação</th>
     </tr>
     <?php 
-    if(isset($produtos) && !empty($produtos)):
     $subtotal =0;
     foreach ($produtos as $prod): ?>
-    
     <tr>
         <td><?= $prod['imagem'] ?></td>
         <td><?= $prod['nome'] ?></td>
@@ -21,10 +19,7 @@
     </tr>
     <?php 
     $subtotal += $prod['preco'];
-    endforeach;
-    else: header("Location: /"); 
-    endif; 
-    ?>
+    endforeach; ?>
     <tr>
         <td colspan="2" style="text-align: right">Subtotal: </td>
         <td><?= $subtotal ?></td>

@@ -41,7 +41,7 @@ class produtos extends model
     }
     public function getCarrinho($id = []) 
     {
-        if(isset($id) && !empty($id)) {
+        if(is_array($id) && count($id) > 0) {
             $sql = "select * from produtos WHERE id IN(".implode(',', $id).")";
             $sql = $this->db->query($sql);
 
