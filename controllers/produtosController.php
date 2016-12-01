@@ -6,7 +6,8 @@
  */
 class produtosController extends controller
 {
-    public function ver($id) {
+    public function ver($id) 
+    {
         $dados = [
             'produto' => '',
         ];

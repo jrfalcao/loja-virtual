@@ -4,9 +4,10 @@
  *
  * @author junior
  */
-class contatoController extends controller {
-    
-    public function index(){
+class contatoController extends controller 
+{    
+    public function index()
+    {
         $dados = array('msg'=>'');
         if(isset($_POST['submitContato'] ) && !empty($_POST['submitContato'])){
             $nome = addslashes($_POST['nome']);
@@ -24,6 +25,5 @@ class contatoController extends controller {
         }
         
         $this->loadTemplate("contato", $dados);
-    }
-    
+    } 
 }

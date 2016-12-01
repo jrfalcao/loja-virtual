@@ -2,8 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="/assets/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="/assets/css/template.css" rel="stylesheet" type="text/css"/>
+        
+        <script src="/assets/bootstrap/docs/assets/js/vendor/jquery.min.js" type="text/javascript"></script>
+        <script src="/assets/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+        
         <title>Minha Loja</title>
     </head>
     <body>
@@ -20,7 +24,7 @@
                 </ul>
                 <a href="/carrinho">
                     <div class="carrinho">
-                        <?php echo (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) ? "Carrinho: ".count($_SESSION['carrinho']) : '';?>
+                        <?php echo (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) ? "Carrinho: ".count($_SESSION['carrinho']).' Itens' : '';?>
                     </div>
                 </a>
             </div>

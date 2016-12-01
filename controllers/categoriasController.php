@@ -6,7 +6,8 @@
  */
 class categoriasController extends controller
 {
-    public function ver($id) {
+    public function ver($id) 
+    {
         $id = filter_var($id, FILTER_VALIDATE_INT);
         if(!empty($id) && isset($id)){
             $dados = [
