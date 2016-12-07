@@ -18,4 +18,11 @@ class usuario extends model
         }
         return;
     }
+    
+    public function insertUser($nome, $email, $senha) {
+        $sql = "INSERT INTO usuarios SET nome = '$nome', email = '$email', senha = '$senha'";
+        $this->db->query($sql);
+        
+        return $this->db->lastInsertId();
+    }
 }

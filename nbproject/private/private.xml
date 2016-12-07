@@ -5,9 +5,12 @@
         <group>
             <file>file:/C:/wamp64/www/loja/controllers/produtosController.php</file>
             <file>file:/C:/wamp64/www/loja/views/produto.php</file>
-            <file>file:/C:/wamp64/www/loja/views/categorias.php</file>
+            <file>file:/C:/wamp64/www/loja/views/template.php</file>
+            <file>file:/C:/wamp64/www/loja/libraries/PagSeguroLibrary/domain/PagSeguroRequest.class.php</file>
             <file>file:/C:/wamp64/www/loja/assets/css/template.css</file>
-            <file>file:/C:/wamp64/www/loja/views/home.php</file>
+            <file>file:/C:/wamp64/www/loja/models/vendas.php</file>
+            <file>file:/C:/wamp64/www/loja/controllers/carrinhoController.php</file>
+            <file>file:/C:/wamp64/www/loja/views/finalizar_compra.php</file>
             <file>file:/C:/wamp64/www/loja/models/produtos.php</file>
         </group>
     </open-files>

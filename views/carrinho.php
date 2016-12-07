@@ -14,7 +14,7 @@
         <td><?= $prod['nome'] ?></td>
         <td><?= $prod['preco'] ?></td>
         <td>
-            <a href="/carrinho/del/<?= $prod['id'] ?>">Excluir</a>
+            <a href="/carrinho/del/<?= $prod['id'] ?>">Retirar</a>
         </td>
     </tr>
     <?php 

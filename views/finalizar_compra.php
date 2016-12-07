@@ -1,8 +1,8 @@
 <?php if(isset($erro)): ?>
-        <div class="alert alert-danger alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>ERRO!</strong> <?= $erro ?>.
-</div>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>ERRO!</strong> <?= $erro ?>.
+    </div>
 <?php endif ?>
 <h1>Finalizar Compra</h1>
 <br>
@@ -45,12 +45,9 @@
     </fieldset><br>
     <fieldset>
         <legend>Informações de pagamento</legend>
-            <?php foreach ($pagamentos as $pg):
-                if ($pg['id'] != 1):
-                    ?>
-                <span style="margin-right: 15px"><input type="radio" name="pg" value="<?= $pg['id'] ?>"> <?= $pg['nome'] ?></span>
-    <?php endif;
-endforeach; ?>
+        <?php foreach ($pagamentos as $pg):?>
+            <span style="margin-right: 15px"><input type="radio" name="pg" value="<?= $pg['id'] ?>"> <?= $pg['nome'] ?></span>
+        <?php endforeach; ?>
     </fieldset><br>
     <input type="submit" value="Efetuar Pagamento"><br><br>
 </form>
