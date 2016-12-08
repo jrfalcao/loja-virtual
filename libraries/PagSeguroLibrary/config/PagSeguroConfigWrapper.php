@@ -27,7 +27,7 @@ class PagSeguroConfigWrapper
     /**
      * production or sandbox
      */
-    const PAGSEGURO_ENV = "production";
+    const PAGSEGURO_ENV = "sandbox";
     /**
      *
      */
@@ -39,7 +39,7 @@ class PagSeguroConfigWrapper
     /**
      *
      */
-    const PAGSEGURO_TOKEN_SANDBOX = "your_sandbox_token";
+    const PAGSEGURO_TOKEN_SANDBOX = "F8CFB491C35E4FDD87F7BFFF62E9EF96";
     /**
      *
      */
@@ -47,7 +47,7 @@ class PagSeguroConfigWrapper
     /**
      *
      */
-    const PAGSEGURO_APP_ID_SANDBOX = "your_sandbox_application_id";
+    const PAGSEGURO_APP_ID_SANDBOX = "app6029109184";
     /**
      *
      */
@@ -55,7 +55,7 @@ class PagSeguroConfigWrapper
     /**
      *
      */
-    const PAGSEGURO_APP_KEY_SANDBOX = "your_sandbox_application_key";
+    const PAGSEGURO_APP_KEY_SANDBOX = "97FC1631DCDCB69114C26FBCE4E9C0F3";
     /**
      * UTF-8, ISO-8859-1
      */
