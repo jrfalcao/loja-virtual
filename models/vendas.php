@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Description of produtos: Model da Entidade Vendas
  *
@@ -6,7 +7,50 @@
  */
 class vendas extends model 
 {
-    public function setVendas($uid, $endereco, $valor, $forma_pg, $prods) {
+    public function verificarVendas() 
+    {
+        require "libraries/PagSeguroLibrary/PagSeguroLibrary.php";
+
+        $code = '';
+        $type = '';
+
+        if (isset($_POST['notificationCode']) && isset($_POST['notificationType'])) {
+            $code = trim($_POST['notificationCode']);
+            $type = trim($_POST['notificationType']);
+            $notificationType = new PagSeguroNotificationType($type);
+            $strType = $notificationType->getTypeFromValue();
+
+            $credentials = PagSeguroConfig::getAccountCredentials();
+            try {
+                $transection = PagSeguroNotificationService::checkTransaction($credentials, $code);
+                $ref = $transection->getReference();
+                $status = $transection->getStatus()->getValue();
+                
+                $novoStatus = '0';
+                switch ($status) {
+                    case '1': //Aguardando Pagamento 
+                    case '2': //Em análise
+                        $novoStatus = '1';
+                        break;
+                    case '3': //Pago
+                    case '4': //Disponivel
+                        $novoStatus = '2';
+                        break;
+                    case '6': //Devolvida
+                    case '7': //Cancelada
+                        $novoStatus = '3';
+                        break;
+                }
+                
+                $this->db->query("UPDATE vendas SET  status_pg = '$novoStatus' WHERE id = '$ref'");
+            } catch (PagSeguroServiceException $e) {
+                echo $e->getMessage();
+            }
+        }
+    }
+
+    public function setVendas($uid, $endereco, $valor, $forma_pg, $prods) 
+    {
         /**
          * Formas de Status de pagamento
          * 1 => Aguardando pg
@@ -20,12 +64,12 @@ class vendas extends model
             $uid, $endereco, $valor, $forma_pg, $status_pg, $pg_link
         ]);
         $id_venda = $this->db->lastInsertId();
-        
-        if($forma_pg == 1){
+
+        if ($forma_pg == 1) {
             $status_pg = '2';
             $pg_link = "/carrinho/obrigado";
-            $this->db->query("UPDATE vendas set status_pg = '$status_pg' WHERE id = '".$id_venda."'");
-        }elseif ($forma_pg == 2) {
+            $this->db->query("UPDATE vendas set status_pg = '$status_pg' WHERE id = '" . $id_venda . "'");
+        } elseif ($forma_pg == 2) {
             //Integração com PagSeguro
             require "libraries/PagSeguroLibrary/PagSeguroLibrary.php";
             $paymentRequest = new PagSeguroPaymentRequest();
@@ -36,14 +80,14 @@ class vendas extends model
             $paymentRequest->setReference($id_venda);
             $paymentRequest->setRedirectUrl("http://loja.pc/carrinho/obrigado");
             $paymentRequest->addParameter("notificationURL", "http://loja.pc/carrinho/notificacao");
-            try{
+            try {
                 $cred = PagSeguroConfig::getAccountCredentials();
                 $pg_link = $paymentRequest->register($cred);
-            }catch(PagSeguroServiceException $e){
+            } catch (PagSeguroServiceException $e) {
                 $e->getMessage();
             }
         }
-                
+
         foreach ($prods as $pd) {
             $sql = $this->db->prepare("INSERT INTO vendas_produtos SET id_vendas = ?, id_produto = ?, quantidade = ?");
             $sql->execute([$id_venda, $pd['id'], 1]);
@@ -51,4 +95,5 @@ class vendas extends model
         unset($_SESSION['carrinho']);
         return $pg_link;
     }
+
 }

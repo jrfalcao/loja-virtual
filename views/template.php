@@ -21,6 +21,7 @@
                         <a href="/categorias/ver/<?=  $categoria['id']?>"><li><?= $categoria['titulo']?></li></a>
                     <?php endforeach;?>
                     <a href="/contato"><li>contato</li></a>
+                    <a href="/pedidos"><li>pedidos</li></a>
                 </ul>
                 <a href="/carrinho">
                     <div class="carrinho">

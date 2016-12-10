@@ -11,6 +11,7 @@
             <file>file:/C:/wamp64/www/loja/models/vendas.php</file>
             <file>file:/C:/wamp64/www/loja/controllers/carrinhoController.php</file>
             <file>file:/C:/wamp64/www/loja/views/finalizar_compra.php</file>
+            <file>file:/C:/wamp64/www/loja/libraries/PagSeguroLibrary/config/PagSeguroConfigWrapper.php</file>
             <file>file:/C:/wamp64/www/loja/models/produtos.php</file>
         </group>
     </open-files>

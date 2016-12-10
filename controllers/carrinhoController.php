@@ -89,6 +89,11 @@ class carrinhoController extends controller {
         $this->loadTemplate('finalizar_compra', $dados);
     }
     
+    public function notificacao() {
+        $vendas = new vendas();
+        $vendas->verificarVendas();
+    }
+    
     public function obrigado() {
         $dados = array();       
         $this->loadTemplate('obrigado', $dados);
