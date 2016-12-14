@@ -14,4 +14,9 @@ if("ENVIRONMENT" == "development"){
     $config['dbpass'] = '';
     $config['host'] = 'localhost';
 }
+$config['status_pgto'] = [
+    '1' => 'Aguardando pg',
+    '2' => 'Aprovado',
+    '3' => 'Cancelado'
+];
 

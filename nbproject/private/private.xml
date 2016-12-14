@@ -3,15 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/loja/controllers/produtosController.php</file>
             <file>file:/C:/wamp64/www/loja/views/produto.php</file>
             <file>file:/C:/wamp64/www/loja/views/template.php</file>
-            <file>file:/C:/wamp64/www/loja/libraries/PagSeguroLibrary/domain/PagSeguroRequest.class.php</file>
+            <file>file:/C:/wamp64/www/loja/models/usuario.php</file>
             <file>file:/C:/wamp64/www/loja/assets/css/template.css</file>
             <file>file:/C:/wamp64/www/loja/models/vendas.php</file>
-            <file>file:/C:/wamp64/www/loja/controllers/carrinhoController.php</file>
+            <file>file:/C:/wamp64/www/loja/views/pedidos.php</file>
+            <file>file:/C:/wamp64/www/loja/controllers/pedidosController.php</file>
+            <file>file:/C:/wamp64/www/loja/controllers/loginController.php</file>
+            <file>file:/C:/wamp64/www/loja/views/login.php</file>
             <file>file:/C:/wamp64/www/loja/views/finalizar_compra.php</file>
-            <file>file:/C:/wamp64/www/loja/libraries/PagSeguroLibrary/config/PagSeguroConfigWrapper.php</file>
             <file>file:/C:/wamp64/www/loja/models/produtos.php</file>
         </group>
     </open-files>

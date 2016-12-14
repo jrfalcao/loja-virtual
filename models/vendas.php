@@ -7,6 +7,29 @@
  */
 class vendas extends model 
 {
+    public function getPedidosByClienteID($id) 
+    {
+        $array = array();
+
+        $sql = "select *,(select pagamentos.nome from pagamentos WHERE pagamentos.id = vendas.forma_pg) as forma_pg from vendas WHERE vendas.id_usuario = $id";
+        $sql = $this->db->query($sql);
+
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+        }
+        return $array;
+    }
+    
+    public function getVenda($id) 
+    {
+        $sql = "select * from vendas WHERE id = $id AND id_usuario = '".($_SESSION['cliente'])."'";
+        $sql = $this->db->query($sql);
+        if ($sql->rowCount() > 0) {
+            return $sql->fetch();
+        }
+        return null;
+    }
+    
     public function verificarVendas() 
     {
         require "libraries/PagSeguroLibrary/PagSeguroLibrary.php";
