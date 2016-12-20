@@ -22,8 +22,10 @@ class pedidosController extends controller
         if(!empty($id)){
             $dados = [];
             $v = new vendas();
-            if($venda = $v->getVenda($id)){
-                var_dump($venda);
+            if($venda = $v->getVenda($id, $_SESSION['cliente'])){
+                $dados['pedido'] = $venda;
+                
+        //var_dump($dados['pedido']);exit;
             }else{
                 header("location: /pedidos");
             }

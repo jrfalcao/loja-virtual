@@ -1,5 +1,5 @@
 <div class="produto_foto">
-    <img alt="" src="<?= $produto['imagem'] ?>" border="0">
+    <img alt="" src="/assets/img/<?= $produto['imagem'] ?>" width="300" height="300" border="0">
 </div>
 <section class="produto_desc">
     <div class="prod_title_desc">

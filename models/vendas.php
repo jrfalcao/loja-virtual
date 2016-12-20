@@ -20,14 +20,32 @@ class vendas extends model
         return $array;
     }
     
-    public function getVenda($id) 
+    public function getVenda($id, $id_usuario) 
     {
-        $sql = "select * from vendas WHERE id = $id AND id_usuario = '".($_SESSION['cliente'])."'";
+        $array = [];
+        $sql = "select *,(select pagamentos.nome from pagamentos WHERE pagamentos.id = vendas.forma_pg) as forma_pg from vendas WHERE id = $id AND id_usuario = '".($id_usuario)."'";
         $sql = $this->db->query($sql);
         if ($sql->rowCount() > 0) {
-            return $sql->fetch();
+            $array = $sql->fetch();
+            $array['produtos'] = $this->getProdutosDoPedido($id);
         }
-        return null;
+        
+        //var_dump($array);exit;
+        return $array;
+    }
+    public function getProdutosDoPedido($id) {
+        $array = array();
+        $sql = "SELECT "
+                . "vendas_produtos.quantidade, vendas_produtos.id_produto, "
+                . "produtos.nome, produtos.imagem, produtos.preco "
+                . "from vendas_produtos "
+                . "LEFT JOIN produtos ON vendas_produtos.id_produto = produtos.id "
+                . "WHERE vendas_produtos.id_vendas = $id";
+        $sql = $this->db->query($sql);
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+        }
+        return $array;
     }
     
     public function verificarVendas() 
