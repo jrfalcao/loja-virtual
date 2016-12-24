@@ -13,16 +13,19 @@ class categoriasController extends controller
         $dados['categorias'] = $categorias->getAll();
         $this->loadTemplate("categorias", $dados);
     }
-    public function add() {
+    public function add() 
+    {
         if(isset($_POST['titulo'])&& !empty($_POST['titulo'])){
             $titulo = addslashes(filter_input(INPUT_POST, "titulo", FILTER_SANITIZE_STRING));
             $cat = new categorias();
             $cat->add($titulo);
             header("location: /painel/categorias");
         }
+        $this->loadTemplate('categoria_add');
     }
     
-    public function edit($id) {
+    public function edit($id) 
+    {
         $dados = array();
         $cat = new categorias();
         if(isset($_POST['titulo'])&& !empty($_POST['titulo'])){
@@ -36,7 +39,8 @@ class categoriasController extends controller
         }
     }
     
-    public function remove($id) {
+    public function remove($id) 
+    {
         $dados = array();
         $id = filter_var($id, FILTER_VALIDATE_INT);
         if(!empty($id)){

@@ -3,14 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/loja/painel/controllers/homeController.php</file>
-            <file>file:/C:/wamp64/www/loja/painel/core/helper.php</file>
-            <file>file:/C:/wamp64/www/loja/painel/controllers/loginController.php</file>
-            <file>file:/C:/wamp64/www/loja/painel/models/admins.php</file>
-            <file>file:/C:/wamp64/www/loja/painel/views/logar.php</file>
-            <file>file:/C:/wamp64/www/loja/painel/views/template.php</file>
-            <file>file:/C:/wamp64/www/loja/painel/views/home.php</file>
-            <file>file:/C:/wamp64/www/loja/painel/core/controller.php</file>
+            <file>file:/C:/wamp64/www/loja/painel/controllers/produtosController.php</file>
+            <file>file:/C:/wamp64/www/loja/painel/models/produtos.php</file>
+            <file>file:/C:/wamp64/www/loja/painel/views/produtos_add.php</file>
+            <file>file:/C:/wamp64/www/loja/painel/views/produtos.php</file>
+            <file>file:/C:/wamp64/www/loja/painel/models/categorias.php</file>
+            <file>file:/C:/wamp64/www/loja/painel/controllers/categoriasController.php</file>
+            <file>file:/C:/wamp64/www/loja/painel/views/categoria_edit.php</file>
         </group>
     </open-files>
 </project-private>
