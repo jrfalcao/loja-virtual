@@ -28,8 +28,8 @@
                 <td>R$ <?= $prod['preco'] ?>,00</td>
                 <td><em><?= $prod['quantidade'] ?></em></td>
                 <td>
-                    <a class="btn btn-sm btn-default" href="/painel/categorias/edit/<?= $prod['id'] ?>">Editar</a> 
-                    <a class="btn btn-sm btn-default" href="/painel/categorias/remove/<?= $prod['id'] ?>">Remover</a>
+                    <a class="btn btn-sm btn-default" href="/painel/produtos/edit/<?= $prod['id'] ?>">Editar</a> 
+                    <a class="btn btn-sm btn-default" href="/painel/produtos/remove/<?= $prod['id'] ?>">Remover</a>
                 </td>
             </tr>
         <?php endforeach; ?>

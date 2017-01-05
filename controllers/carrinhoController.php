@@ -36,57 +36,30 @@ class carrinhoController extends controller {
     }
 
     public function finalizar() {
-        $dados = array('total' => 0);
-        $p = new pagamentos();
-        $dados['pagamentos'] = $p->get();
+       $dados = array();
+       require 'libraries/PagSeguroLibrary/PagSeguroLibrary.php';
+       $prods = array();
+       if(isset($_SESSION['carrinho'])){
+           $prods = $_SESSION['carrinho'];
+       }
+       if(count($prods) > 0){
+           $produtos = new produtos();
+           $dados['produtos'] = $produtos->getCarrinho($prods);
+           foreach ($dados['produtos'] as $prod) {
+               $dados['total'] = $prod['preco'];
+           }
+       }
+       if(isset($_POST['pg_form']) && !empty($_POST['pg_form'])){
 
-        $p = new produtos();
-        if ($p->getCarrinho($_SESSION['carrinho'])) {
-            $dados['produtos'] = $p->getCarrinho($_SESSION['carrinho']);
-            foreach ($dados['produtos'] as $prod) {
-                $dados['total'] += $prod['preco'];
-            }
-        }
-        if (isset($_POST['nome']) && !empty($_POST['nome'])) {
-            $nome = addslashes($_POST['nome']);
-            $email = addslashes($_POST['email']);
-            $senha = md5(addslashes($_POST['senha']));
-            $endereco = addslashes($_POST['endereco']);
-
-            if (!empty($_POST['pg']))
-                $pg = addslashes($_POST['pg']);
-            else
-                $pg = '';
-
-            if (!empty($email) && !empty($senha) && !empty($endereco) && !empty($pg)) {
-                $total = 0;
-                $u = new usuario();
-                if ($u->getUsuarioPorEmail($email)) {
-                    $user = $u->getUsuarioPorEmail($email);
-                    if ($senha == $user['senha']) {
-                        $uid = $user['id'];
-                    } else {
-                        $dados['erro'] = "Usuário e/ou senha incorretos!";
-                    }
-                } else {
-                    $uid = $u->insertUser($nome, $email, $senha);
-                }
-                if ($uid > 0) {
-                    $prods = $p->getCarrinho($_SESSION['carrinho']);
-                    foreach ($prods as $prod){
-                        $total += $prod['preco'];
-                    }
-                }
-                $v = new vendas();
-                $link = $v->setVendas($uid, $endereco, $total, $pg, $prods);
-                
-                header("Location: ".$link);
-                
-            } else {
-                $dados['erro'] = "Preencha todos os campos!!!";
-            }
-        }
-        $this->loadTemplate('finalizar_compra', $dados);
+       }else{
+           try{
+               $credentials = PagSeguroConfig::getAccountCredentials();
+               $dados['sessionId'] = PagSeguroSessionService::getSession($credentials);
+           }catch(PagSeguroServiceException $e){
+               die($e->getMessage());
+           }
+       }
+       $this->loadTemplate('finalizar_compra', $dados);
     }
     
     public function notificacao() {

@@ -6,16 +6,11 @@
  */
 class produtos extends model
 {
-    public function add($nome, $descricao, $categoria, $preco, $quantidade, $md5imagem) 
+    public function add($nome, $descricao, $categoria, $preco, $quantidade, $imagem) 
     {
-        $nome = addslashes($nome);
-        $descricao = addslashes($descricao);
-        $categoria = addslashes($categoria);
-        $preco = addslashes($preco);
-        $quantidade = addslashes($quantidade);
-        $imagem = addslashes($md5imagem);
         if(isset($nome) && !empty($nome) && isset($imagem) && !empty($imagem)){
-            $sql = "INSERT INTO `loja`.`produtos` (`id_categoria`, `nome`, `imagem`, `preco`, `quantidade`, `descricao`) VALUES ('$categoria', '$nome', '$imagem', '$preco', '$quantidade', '$descricao')";
+            $sql = "INSERT INTO loja.produtos (`id_categoria`, `nome`, `imagem`, `preco`, `quantidade`, `descricao`) "
+                                        . "VALUES ($categoria, '$nome', '$imagem', $preco, $quantidade, '$descricao')";
             $this->db->query($sql);
         }
     }
@@ -39,16 +34,20 @@ class produtos extends model
     
     public function removeProduto($id) {
         $id = addslashes($id);
+        $prod = $this->get($id);
+        $filename = "../assets/img/".$prod['imagem']."";
+        unlink($filename);
         $sql = "DELETE FROM produtos WHERE id = '".($id)."'";
         $this->db->query($sql);
     }
     
-    /*public function edit($titulo, $id) {
-        $titulo = addslashes($titulo);
+    public function edit($id, $nome, $descricao, $categoria, $preco, $quantidade, $imagem = null) {
         $id = addslashes($id);
-        $sql = "UPDATE categorias SET titulo = '$titulo' WHERE id = '$id'";
+        //var_dump($id, $nome, $descricao, $categoria, $preco, $quantidade, $imagem);exit;
+        $sql = ($imagem != null) ? "UPDATE produtos SET nome = '$nome', descricao = '$descricao', id_categoria = '$categoria', preco = '$preco', quantidade = '$quantidade', imagem = '$imagem' WHERE id = '$id'"
+                                : "UPDATE produtos SET nome = '$nome', descricao = '$descricao', id_categoria = '$categoria', preco = '$preco', quantidade = '$quantidade' WHERE id = '$id'";
         $this->db->query($sql);
-    }*/
+    }
     
     public function get($id) {
         $sql = "SELECT * FROM produtos WHERE id = '$id'";

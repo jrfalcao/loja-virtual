@@ -1,53 +1,86 @@
-<?php if(isset($erro)): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>ERRO!</strong> <?= $erro ?>.
-    </div>
-<?php endif ?>
 <h1>Finalizar Compra</h1>
-<br>
-<form method="POST">
+
+<form method="post" id="form">
     <fieldset>
-        <legend>Informações de usuário</legend>
-        <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">Nome</span>
-            <input type="text" name="nome" class="form-control" placeholder="Username">
-        </div><br>
-        <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">Email</span>
-            <input type="email" name="email" class="form-control" placeholder="Email">            
-        </div><br>
-        <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">Senha</span>
-            <input type="password" name="senha" class="form-control" >
-        </div>
+        <legend>Informações do usuário</legend>
+        Nome:<br>
+        <input type="text" name="nome"><br><br>
+        E-Mail:<br>
+        <input type="email" name="email"><br><br>
+        Senha:<br>
+        <input type="password" name="senha"><br><br>
+        Telefone:<br>
+        <input type="text" name="ddd" size="5"><input type="text" name="telefone"><br><br>
     </fieldset><br>
     <fieldset>
         <legend>Informações de endereço</legend>
-        <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1">Endereço</span>
-            <textarea name="endereco" class="form-control" ></textarea>
-        </div>
+        CEP:<br>
+        <input type="text" name="endereco[cep]"><br><br>
+        Endereço:<br>
+        <input type="text" name="endereco[rua]"><br><br>
+        Número:<br>
+        <input type="text" name="endereco[numero]"><br><br>
+        Complemento:<br>
+        <input type="text" name="endereco[comp]"><br><br>
+        Bairro:<br>
+        <input type="text" name="endereco[bairro]"><br><br>
+        Cidade:<br>
+        <input type="text" name="endereco[cidade]"><br><br>
+        Estado:<br>
+        <input type="text" name="endereco[estado]"><br><br>
     </fieldset><br>
     <fieldset>
-        <legend>Resumo da Compra</legend>
-        <h4>Total a pagar: R$ <?= $total ?>,00</h4>
-        <h4>Itens da compra:</h4>
-        <table class="table" border="0" width="70%">
-            <?php
-            foreach ($produtos as $prod):?>
-                <tr>
-                    <td><?= $prod['nome'] ?></td>
-                    <td>R$ <?= $prod['preco'] ?>,00</td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
+        <legend>Resumo da compra</legend>
+        Total a pagar: R$ <?= $total ?>
     </fieldset><br>
     <fieldset>
         <legend>Informações de pagamento</legend>
-        <?php foreach ($pagamentos as $pg):?>
-            <span style="margin-right: 15px"><input type="radio" name="pg" value="<?= $pg['id'] ?>"> <?= $pg['nome'] ?></span>
-        <?php endforeach; ?>
+        <select name="pg_form" id="pg_form" onchange="selectPg()">
+            <option value=""></option>
+            <option value="CREDIT_CARD">Cartão de Crédito</option>
+            <option value="BOLETO">Boleto</option>
+            <option value="BALANCE">Saldo PagSeguro</option>
+        </select>
+        <div id="cc" style="display: none">
+            Qual a bandeira do seu cartão?<br>
+            <div id="bandeiras"></div>
+            <br>
+            <div id="cardinfo" style="display: none">
+                Parcelamento:<br>
+                <select name="parc" id="parc"></select><br><br>
+                
+                Titular do cartão:<br>
+                <input type="text" name="c_titular">
+                
+                CPF do Titular:<br>
+                <input type="text" name="c_cpf">
+                
+                Número do Cartão:<br>
+                <input type="text" name="cartao" id="cartao"><br><br>
+                
+                Dígito:<br>
+                <input type="text" name="digito" id="cvv" maxlength="4"><br><br>
+                
+                Validade:<br>
+                <input type="text" name="validade" id="validade"><br><br>
+            </div>
+        </div>
     </fieldset><br>
-    <input type="submit" value="Efetuar Pagamento"><br><br>
+    <input type="submit" value="Pagamento" class="btn btn-default"><br><br>
+
+    <input type="hidden" class="bandeira" id="bandeira">
+    <input type="hidden" class="ctoken" id="ctoken">
+    <input type="hidden" class="shash" id="shash">
+    <input type="hidden" class="sessionId" value="<?= $sessionId ?>">
 </form>
+
+<script type="text/javascript" src=
+"https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js">
+</script>
+
+<script type="text/javascript">
+    var sessionId = "<?= $sessionId ?>";
+    var valor = "<?= $total ?>";
+    var formOk = false;
+</script>
+<script type="text/javascript" src="/assets/js/ckt.js"></script>
