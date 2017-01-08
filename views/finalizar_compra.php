@@ -1,6 +1,6 @@
 <h1>Finalizar Compra</h1>
 
-<form method="post" id="form">
+<form method="post" id="form" onsubmit="pagar()">
     <fieldset>
         <legend>Informações do usuário</legend>
         Nome:<br>
@@ -50,10 +50,10 @@
                 <select name="parc" id="parc"></select><br><br>
                 
                 Titular do cartão:<br>
-                <input type="text" name="c_titular">
+                <input type="text" name="c_titular"><br><br>
                 
                 CPF do Titular:<br>
-                <input type="text" name="c_cpf">
+                <input type="text" name="c_cpf"><br><br>
                 
                 Número do Cartão:<br>
                 <input type="text" name="cartao" id="cartao"><br><br>
