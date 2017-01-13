@@ -10,7 +10,7 @@
         Senha:<br>
         <input type="password" name="senha"><br><br>
         Telefone:<br>
-        <input type="text" name="ddd" size="5"><input type="text" name="telefone"><br><br>
+        <input type="text" name="ddd" size="5" placeholder="DDD"><input type="text" name="telefone" placeholder="Telefone"><br><br>
     </fieldset><br>
     <fieldset>
         <legend>Informações de endereço</legend>
